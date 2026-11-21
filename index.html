@@ -1,0 +1,1105 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GTA V Cheats — Todos os Códigos & Trapaças (PS, Xbox, PC, Celular)</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts: Inter & Oswald (Estilo Urbano/Los Santos) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Oswald', 'sans-serif'],
+                    },
+                    colors: {
+                        gta: {
+                            black: '#08090a',
+                            surface: '#111317',
+                            card: '#16191f',
+                            border: '#242933',
+                            green: '#22c55e',
+                            gold: '#eab308'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #08090a;
+            color: #f8fafc;
+            -webkit-tap-highlight-color: transparent;
+            overscroll-behavior-y: none;
+        }
+
+        /* Esconde scrollbar mantendo rolagem fluida por toque */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Sombra estilo console / botão físico */
+        .btn-cap {
+            box-shadow: 0 3px 0 rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+
+        /* Safe area inferior para smartphones */
+        .pb-safe {
+            padding-bottom: env(safe-area-inset-bottom, 16px);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col bg-gta-black text-slate-100 selection:bg-gta-green selection:text-black">
+
+    <!-- ==================== HEADER FIXO NO TOPO (STICKY) ==================== -->
+    <header class="sticky top-0 z-30 bg-gta-black/95 backdrop-blur-lg border-b border-gta-border shadow-xl">
+        <div class="max-w-5xl mx-auto px-3.5 sm:px-6 pt-3 pb-2.5 space-y-2.5">
+            
+            <!-- Linha 1: Marca Los Santos Cheats + Contador + Info -->
+            <div class="flex items-center justify-between gap-2">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-gta-green to-emerald-700 flex items-center justify-center shadow-lg shadow-gta-green/20 border border-emerald-400/30 shrink-0">
+                        <span class="font-display font-bold text-black text-lg tracking-tighter">V</span>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-1.5">
+                            <h1 class="font-display font-bold text-base sm:text-lg uppercase tracking-wide text-white leading-none">
+                                Los Santos <span class="text-gta-green">Cheats</span>
+                            </h1>
+                            <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-gta-gold/15 text-gta-gold border border-gta-gold/30 uppercase">GTA V</span>
+                        </div>
+                        <p class="text-[11px] text-slate-400 mt-0.5">Guia completo de códigos • Modo História</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <button onclick="openTipsModal()" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-gta-card hover:bg-slate-800 border border-gta-border text-xs font-semibold text-gta-gold transition active:scale-95" title="Regras e Dicas Importantes">
+                        <i data-lucide="alert-circle" class="w-3.5 h-3.5"></i>
+                        <span class="hidden sm:inline">Regras & Troféus</span>
+                        <span class="sm:hidden">Dicas</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Linha 2: Seletor de Plataforma (PS / Xbox / PC / Celular) -->
+            <div class="grid grid-cols-4 gap-1.5 p-1 bg-gta-surface rounded-xl border border-gta-border" role="tablist" aria-label="Selecionar Plataforma">
+                <button onclick="setPlatform('ps')" data-plat="ps" class="plat-btn flex items-center justify-center gap-1.5 py-2 px-2 rounded-lg text-xs font-bold transition active:scale-95 bg-blue-600 text-white shadow-md">
+                    <i data-lucide="gamepad-2" class="w-3.5 h-3.5 shrink-0"></i>
+                    <span>PS4/PS5</span>
+                </button>
+                <button onclick="setPlatform('xbox')" data-plat="xbox" class="plat-btn flex items-center justify-center gap-1.5 py-2 px-2 rounded-lg text-xs font-bold transition active:scale-95 text-slate-400 hover:text-white">
+                    <i data-lucide="gamepad" class="w-3.5 h-3.5 shrink-0"></i>
+                    <span>Xbox</span>
+                </button>
+                <button onclick="setPlatform('pc')" data-plat="pc" class="plat-btn flex items-center justify-center gap-1.5 py-2 px-2 rounded-lg text-xs font-bold transition active:scale-95 text-slate-400 hover:text-white">
+                    <i data-lucide="keyboard" class="w-3.5 h-3.5 shrink-0"></i>
+                    <span>PC</span>
+                </button>
+                <button onclick="setPlatform('phone')" data-plat="phone" class="plat-btn flex items-center justify-center gap-1.5 py-2 px-2 rounded-lg text-xs font-bold transition active:scale-95 text-slate-400 hover:text-white">
+                    <i data-lucide="smartphone" class="w-3.5 h-3.5 shrink-0"></i>
+                    <span>Celular</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== CONTEÚDO PRINCIPAL ==================== -->
+    <main class="flex-1 max-w-5xl w-full mx-auto px-3.5 sm:px-6 py-4 space-y-4 pb-safe">
+
+        <!-- Aviso Contextual da Plataforma Selecionada -->
+        <div id="platform-helper-banner" class="flex items-center justify-between gap-3 px-3.5 py-2.5 rounded-xl bg-gta-surface border border-gta-border text-xs text-slate-300">
+            <div class="flex items-center gap-2 min-w-0">
+                <i id="platform-helper-icon" data-lucide="info" class="w-4 h-4 text-gta-green shrink-0"></i>
+                <p id="platform-helper-text" class="truncate sm:whitespace-normal">
+                    Aperte a sequência rapidamente no controle durante o jogo (não pause).
+                </p>
+            </div>
+            <span id="visible-cheats-count" class="shrink-0 font-bold text-[11px] px-2 py-0.5 rounded-md bg-gta-green/15 text-gta-green border border-gta-green/30">
+                34 códigos
+            </span>
+        </div>
+
+        <!-- Barra de Busca Instantânea -->
+        <div class="relative">
+            <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+            <input 
+                type="text" 
+                id="search-input" 
+                placeholder="Buscar código (ex: helicóptero, armas, estrelas, invencibilidade)..." 
+                class="w-full bg-gta-surface border border-gta-border focus:border-gta-green rounded-xl pl-10 pr-10 py-3 text-sm text-white placeholder-slate-500 outline-none transition"
+            >
+            <button id="clear-search-btn" onclick="clearSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-white" aria-label="Limpar busca">
+                <i data-lucide="x" class="w-4 h-4"></i>
+            </button>
+        </div>
+
+        <!-- Carrossel Horizontal de Categorias -->
+        <div id="category-pills" class="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5">
+            <!-- Preenchido via JS -->
+        </div>
+
+        <!-- Grid de Cards de Códigos -->
+        <div id="cheats-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-3.5">
+            <!-- Cards gerados via JS -->
+        </div>
+
+        <!-- Estado Vazio (Quando não encontra resultados) -->
+        <div id="empty-state" class="hidden flex flex-col items-center justify-center py-12 px-4 text-center bg-gta-surface/60 border border-gta-border rounded-2xl">
+            <div class="w-12 h-12 rounded-2xl bg-gta-card border border-gta-border flex items-center justify-center text-slate-400 mb-3">
+                <i data-lucide="search-x" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-sm font-bold text-white mb-1">Nenhuma trapaça encontrada</h3>
+            <p class="text-xs text-slate-400 max-w-xs mb-4">Tente buscar por outro termo ou volte para a lista completa de códigos.</p>
+            <button onclick="resetFilters()" class="px-4 py-2 rounded-xl bg-gta-green text-black text-xs font-bold hover:brightness-110 transition">
+                Mostrar Todos os Códigos
+            </button>
+        </div>
+
+    </main>
+
+    <!-- ==================== MODAL: MODO LEITURA FÁCIL / TELA CHEIA ==================== -->
+    <div id="focus-modal" class="hidden fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-end sm:items-center justify-center p-0 sm:p-4" onclick="closeFocusModalOnBackdrop(event)">
+        <div class="w-full max-w-xl bg-gta-surface border-t sm:border border-gta-border rounded-t-3xl sm:rounded-3xl p-5 sm:p-6 shadow-2xl space-y-5 animate-fade-in">
+            
+            <!-- Cabeçalho do Modal -->
+            <div class="flex items-start justify-between gap-3">
+                <div>
+                    <span id="modal-category-badge" class="inline-block text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-gta-green/15 text-gta-green border border-gta-green/30 mb-1.5">
+                        Categoria
+                    </span>
+                    <h2 id="modal-cheat-title" class="font-display text-xl sm:text-2xl font-bold text-white uppercase tracking-wide">
+                        Título do Código
+                    </h2>
+                    <p id="modal-cheat-desc" class="text-xs sm:text-sm text-slate-400 mt-1">
+                        Descrição do efeito no jogo.
+                    </p>
+                </div>
+
+                <button onclick="closeFocusModal()" class="p-2 rounded-xl bg-gta-card hover:bg-slate-800 text-slate-300 border border-gta-border transition shrink-0" aria-label="Fechar">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Seletor rápido de plataforma dentro do Modal -->
+            <div class="grid grid-cols-4 gap-1 p-1 bg-gta-black rounded-xl border border-gta-border">
+                <button onclick="setPlatform('ps', true)" data-modal-plat="ps" class="modal-plat-btn py-1.5 rounded-lg text-xs font-bold transition">PS4/PS5</button>
+                <button onclick="setPlatform('xbox', true)" data-modal-plat="xbox" class="modal-plat-btn py-1.5 rounded-lg text-xs font-bold transition">Xbox</button>
+                <button onclick="setPlatform('pc', true)" data-modal-plat="pc" class="modal-plat-btn py-1.5 rounded-lg text-xs font-bold transition">PC</button>
+                <button onclick="setPlatform('phone', true)" data-modal-plat="phone" class="modal-plat-btn py-1.5 rounded-lg text-xs font-bold transition">Celular</button>
+            </div>
+
+            <!-- Área Gigante de Leitura Fácil (Ideal para apoiar o celular na mesa) -->
+            <div class="bg-gta-black border border-gta-border rounded-2xl p-4 sm:p-6 flex flex-col items-center justify-center min-h-[150px] text-center">
+                <span id="modal-instruction-label" class="text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-3">
+                    Sequência de Botões (Leitura Ampliada)
+                </span>
+                <div id="modal-sequence-display" class="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5">
+                    <!-- Botões gigantes renderizados via JS -->
+                </div>
+            </div>
+
+            <!-- Ações do Modal: Copiar & Favoritar -->
+            <div class="flex items-center gap-2.5">
+                <button id="modal-copy-btn" onclick="copyCurrentModalCheat()" class="flex-1 py-3 px-4 rounded-xl bg-gta-green hover:brightness-110 text-black font-bold text-xs sm:text-sm transition flex items-center justify-center gap-2 active:scale-95">
+                    <i data-lucide="copy" class="w-4 h-4"></i>
+                    <span>Copiar Código</span>
+                </button>
+                <button id="modal-fav-btn" onclick="toggleCurrentModalFavorite()" class="py-3 px-4 rounded-xl bg-gta-card hover:bg-slate-800 border border-gta-border text-white font-semibold text-xs sm:text-sm transition flex items-center justify-center gap-2 active:scale-95">
+                    <i data-lucide="star" class="w-4 h-4"></i>
+                    <span>Favoritar</span>
+                </button>
+            </div>
+
+            <!-- Aviso de Troféus / GTA Online -->
+            <div class="flex items-start gap-2.5 p-3 rounded-xl bg-amber-500/10 border border-amber-500/25 text-[11px] text-amber-200/90 leading-relaxed">
+                <i data-lucide="shield-alert" class="w-4 h-4 text-gta-gold shrink-0 mt-0.5"></i>
+                <span>
+                    <strong>Atenção:</strong> Ativar códigos desabilita <strong>Troféus e Conquistas</strong> apenas na sessão atual (reinicie o jogo para reativar). Não funciona no <strong>GTA Online</strong>.
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== MODAL: DICAS & REGRAS DO GTA V ==================== -->
+    <div id="tips-modal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4" onclick="if(event.target === this) closeTipsModal()">
+        <div class="w-full max-w-md bg-gta-surface border border-gta-border rounded-3xl p-5 sm:p-6 space-y-4 shadow-2xl">
+            <div class="flex items-center justify-between">
+                <h3 class="font-display text-lg font-bold uppercase text-white flex items-center gap-2">
+                    <i data-lucide="book-open-check" class="w-5 h-5 text-gta-green"></i>
+                    <span>Como Usar os Códigos</span>
+                </h3>
+                <button onclick="closeTipsModal()" class="p-1.5 rounded-lg bg-gta-card text-slate-400 hover:text-white">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+            
+            <ul class="space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                <li class="flex gap-2.5">
+                    <span class="w-5 h-5 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+                    <span><strong>PlayStation & Xbox:</strong> Digite a sequência diretamente no controle durante o jogo (fora do menu de pausa).</span>
+                </li>
+                <li class="flex gap-2.5">
+                    <span class="w-5 h-5 rounded-full bg-gta-green/20 text-gta-green font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+                    <span><strong>PC (Console):</strong> Pressione a tecla <kbd class="px-1.5 py-0.5 bg-gta-card border border-gta-border rounded text-white font-mono">~</kbd> ou <kbd class="px-1.5 py-0.5 bg-gta-card border border-gta-border rounded text-white font-mono">'</kbd> (aspas), digite a palavra-chave e aperte <strong>Enter</strong>.</span>
+                </li>
+                <li class="flex gap-2.5">
+                    <span class="w-5 h-5 rounded-full bg-gta-gold/20 text-gta-gold font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+                    <span><strong>Celular In-Game:</strong> Abra o celular do personagem (Seta para Cima), vá em <em>Contatos</em>, aperte Quadrado/X/Espaço para abrir o teclado numérico e disque o número <strong>1-999-...</strong></span>
+                </li>
+                <li class="flex gap-2.5">
+                    <span class="w-5 h-5 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">!</span>
+                    <span><strong>Troféus & Conquistas:</strong> Códigos não podem ser salvos e desativam conquistas até você fechar e abrir o jogo novamente.</span>
+                </li>
+            </ul>
+
+            <button onclick="closeTipsModal()" class="w-full py-2.5 rounded-xl bg-gta-green text-black font-bold text-xs sm:text-sm hover:brightness-110 transition">
+                Entendi, Bora Jogar!
+            </button>
+        </div>
+    </div>
+
+    <!-- ==================== NOTIFICAÇÃO TOAST ==================== -->
+    <div id="toast-container" class="fixed bottom-5 inset-x-4 sm:inset-x-auto sm:right-5 sm:w-80 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- ==================== JAVASCRIPT COMPLETO ==================== -->
+    <script>
+        // 1. BANCO DE DADOS COMPLETO COM OS 34 CÓDIGOS DO GTA V (PS, XBOX, PC, CELULAR)
+        const GTA5_CHEATS = [
+            // --- JOGADOR & COMBATE ---
+            {
+                id: 'invencibilidade',
+                title: 'Invencibilidade (5 Minutos)',
+                category: 'Jogador & Combate',
+                desc: 'Deixa o personagem imune a qualquer dano por 5 minutos. Reative quando o tempo acabar.',
+                pc: 'PAINKILLER',
+                phone: '1-999-724-654-5537',
+                ps: ['DIREITA', 'X', 'DIREITA', 'ESQUERDA', 'DIREITA', 'R1', 'DIREITA', 'ESQUERDA', 'X', 'TRIANGULO'],
+                xbox: ['DIREITA', 'A', 'DIREITA', 'ESQUERDA', 'DIREITA', 'RB', 'DIREITA', 'ESQUERDA', 'A', 'Y']
+            },
+            {
+                id: 'vida-colete',
+                title: 'Vida e Colete no Máximo',
+                category: 'Jogador & Combate',
+                desc: 'Restaura 100% da barra de vida, enche o colete balístico e conserta o veículo se estiver dentro de um.',
+                pc: 'TURTLE',
+                phone: '1-999-887-853',
+                ps: ['CIRCULO', 'L1', 'TRIANGULO', 'R2', 'X', 'QUADRADO', 'CIRCULO', 'DIREITA', 'QUADRADO', 'L1', 'L1', 'L1'],
+                xbox: ['B', 'LB', 'Y', 'RT', 'A', 'X', 'B', 'DIREITA', 'X', 'LB', 'LB', 'LB']
+            },
+            {
+                id: 'todas-armas',
+                title: 'Todas as Armas e Munição',
+                category: 'Jogador & Combate',
+                desc: 'Desbloqueia todo o arsenal do jogo (RPG, Minigun, Rifles, Granadas) com munição completa.',
+                pc: 'TOOLUP',
+                phone: '1-999-866-587',
+                ps: ['TRIANGULO', 'R2', 'ESQUERDA', 'L1', 'X', 'DIREITA', 'TRIANGULO', 'BAIXO', 'QUADRADO', 'L1', 'L1', 'L1'],
+                xbox: ['Y', 'RT', 'ESQUERDA', 'LB', 'A', 'DIREITA', 'Y', 'BAIXO', 'X', 'LB', 'LB', 'LB']
+            },
+            {
+                id: 'habilidade-especial',
+                title: 'Recarregar Habilidade Especial',
+                category: 'Jogador & Combate',
+                desc: 'Enche instantaneamente a barra de poder especial do Michael, Franklin ou Trevor.',
+                pc: 'POWERUP',
+                phone: '1-999-769-3787',
+                ps: ['X', 'X', 'QUADRADO', 'R1', 'L1', 'X', 'DIREITA', 'ESQUERDA', 'X'],
+                xbox: ['A', 'A', 'X', 'RB', 'LB', 'A', 'DIREITA', 'ESQUERDA', 'A']
+            },
+            {
+                id: 'socos-explosivos',
+                title: 'Socos Explosivos',
+                category: 'Jogador & Combate',
+                desc: 'Seus ataques corpo a corpo causam explosões no impacto.',
+                pc: 'HOTHANDS',
+                phone: '1-999-4684-2637',
+                ps: ['DIREITA', 'ESQUERDA', 'X', 'TRIANGULO', 'R1', 'CIRCULO', 'CIRCULO', 'CIRCULO', 'L2'],
+                xbox: ['DIREITA', 'ESQUERDA', 'A', 'Y', 'RB', 'B', 'B', 'B', 'LT']
+            },
+            {
+                id: 'balas-explosivas',
+                title: 'Balas Explosivas (Bang Bang)',
+                category: 'Jogador & Combate',
+                desc: 'Todos os disparos de armas de fogo explodem ao atingir qualquer alvo.',
+                pc: 'HIGHEX',
+                phone: '1-999-444-439',
+                ps: ['DIREITA', 'QUADRADO', 'X', 'ESQUERDA', 'R1', 'R2', 'ESQUERDA', 'DIREITA', 'DIREITA', 'L1', 'L1', 'L1'],
+                xbox: ['DIREITA', 'X', 'A', 'ESQUERDA', 'RB', 'RT', 'ESQUERDA', 'DIREITA', 'DIREITA', 'LB', 'LB', 'LB']
+            },
+            {
+                id: 'balas-fogo',
+                title: 'Balas de Fogo (Incendiárias)',
+                category: 'Jogador & Combate',
+                desc: 'Os tiros incendeiam inimigos, carros e objetos ao impacto.',
+                pc: 'INCENDIARY',
+                phone: '1-999-462-363-4279',
+                ps: ['L1', 'R1', 'QUADRADO', 'R1', 'ESQUERDA', 'R2', 'R1', 'ESQUERDA', 'QUADRADO', 'DIREITA', 'L1', 'L1'],
+                xbox: ['LB', 'RB', 'X', 'RB', 'ESQUERDA', 'RT', 'RB', 'ESQUERDA', 'X', 'DIREITA', 'LB', 'LB']
+            },
+            {
+                id: 'corrida-rapida',
+                title: 'Corrida Rápida (Super Velocidade)',
+                category: 'Jogador & Combate',
+                desc: 'Aumenta drasticamente a velocidade de corrida do personagem.',
+                pc: 'CATCHME',
+                phone: '1-999-228-8463',
+                ps: ['TRIANGULO', 'ESQUERDA', 'DIREITA', 'DIREITA', 'L2', 'L1', 'QUADRADO'],
+                xbox: ['Y', 'ESQUERDA', 'DIREITA', 'DIREITA', 'LT', 'LB', 'X']
+            },
+            {
+                id: 'nado-rapido',
+                title: 'Nado Rápido',
+                category: 'Jogador & Combate',
+                desc: 'Permite nadar em altíssima velocidade na superfície e embaixo d’água.',
+                pc: 'GOTGILLS',
+                phone: '1-999-468-44557',
+                ps: ['ESQUERDA', 'ESQUERDA', 'L1', 'DIREITA', 'DIREITA', 'R2', 'ESQUERDA', 'L2', 'DIREITA'],
+                xbox: ['ESQUERDA', 'ESQUERDA', 'LB', 'DIREITA', 'DIREITA', 'RT', 'ESQUERDA', 'LT', 'DIREITA']
+            },
+            {
+                id: 'super-pulo',
+                title: 'Super Pulo',
+                category: 'Jogador & Combate',
+                desc: 'Permite dar saltos gigantescos. Segure o botão de pulo para ir ainda mais alto.',
+                pc: 'HOPTOIT',
+                phone: '1-999-467-8648',
+                ps: ['ESQUERDA', 'ESQUERDA', 'TRIANGULO', 'TRIANGULO', 'DIREITA', 'DIREITA', 'ESQUERDA', 'DIREITA', 'QUADRADO', 'R1', 'R2'],
+                xbox: ['ESQUERDA', 'ESQUERDA', 'Y', 'Y', 'DIREITA', 'DIREITA', 'ESQUERDA', 'DIREITA', 'X', 'RB', 'RT']
+            },
+            {
+                id: 'paraquedas',
+                title: 'Ganhar Paraquedas',
+                category: 'Jogador & Combate',
+                desc: 'Equipa automaticamente um paraquedas nas costas do personagem.',
+                pc: 'SKYDIVE',
+                phone: '1-999-759-3483',
+                ps: ['ESQUERDA', 'DIREITA', 'L1', 'L2', 'R1', 'R2', 'R2', 'ESQUERDA', 'ESQUERDA', 'DIREITA', 'L1'],
+                xbox: ['ESQUERDA', 'DIREITA', 'LB', 'LT', 'RB', 'RT', 'RT', 'ESQUERDA', 'ESQUERDA', 'DIREITA', 'LB']
+            },
+            {
+                id: 'skyfall',
+                title: 'Queda Livre (Skyfall)',
+                category: 'Jogador & Combate',
+                desc: 'Teleporta o personagem para o alto dos céus de Los Santos em queda livre (sem paraquedas).',
+                pc: 'SKYFALL',
+                phone: '1-999-759-3255',
+                ps: ['L1', 'L2', 'R1', 'R2', 'ESQUERDA', 'DIREITA', 'ESQUERDA', 'DIREITA', 'L1', 'L2', 'R1', 'R2', 'ESQUERDA', 'DIREITA', 'ESQUERDA', 'DIREITA'],
+                xbox: ['LB', 'LT', 'RB', 'RT', 'ESQUERDA', 'DIREITA', 'ESQUERDA', 'DIREITA', 'LB', 'LT', 'RB', 'RT', 'ESQUERDA', 'DIREITA', 'ESQUERDA', 'DIREITA']
+            },
+            {
+                id: 'mira-camera-lenta',
+                title: 'Mira em Câmera Lenta',
+                category: 'Jogador & Combate',
+                desc: 'Deixa o tempo lento ao mirar com armas. Digite até 4x para aumentar o efeito (5ª desativa).',
+                pc: 'DEADEYE',
+                phone: '1-999-332-3393',
+                ps: ['QUADRADO', 'L2', 'R1', 'TRIANGULO', 'ESQUERDA', 'QUADRADO', 'L2', 'DIREITA', 'X'],
+                xbox: ['X', 'LT', 'RB', 'Y', 'ESQUERDA', 'X', 'LT', 'DIREITA', 'A']
+            },
+            {
+                id: 'modo-bebado',
+                title: 'Modo Bêbado',
+                category: 'Jogador & Combate',
+                desc: 'Deixa a visão turva e os movimentos do personagem completamente cambaleantes.',
+                pc: 'LIQUOR',
+                phone: '1-999-547-861',
+                ps: ['TRIANGULO', 'DIREITA', 'DIREITA', 'ESQUERDA', 'DIREITA', 'QUADRADO', 'CIRCULO', 'ESQUERDA'],
+                xbox: ['Y', 'DIREITA', 'DIREITA', 'ESQUERDA', 'DIREITA', 'X', 'B', 'ESQUERDA']
+            },
+
+            // --- POLÍCIA & MUNDO ---
+            {
+                id: 'aumentar-procurado',
+                title: 'Aumentar Nível de Procurado (+1 Estrela)',
+                category: 'Polícia & Mundo',
+                desc: 'Adiciona uma estrela de procurado pela polícia a cada ativação (até 5 estrelas).',
+                pc: 'FUGITIVE',
+                phone: '1-999-3844-8483',
+                ps: ['R1', 'R1', 'CIRCULO', 'R2', 'ESQUERDA', 'DIREITA', 'ESQUERDA', 'DIREITA', 'ESQUERDA', 'DIREITA'],
+                xbox: ['RB', 'RB', 'B', 'RT', 'ESQUERDA', 'DIREITA', 'ESQUERDA', 'DIREITA', 'ESQUERDA', 'DIREITA']
+            },
+            {
+                id: 'diminuir-procurado',
+                title: 'Diminuir Nível de Procurado (-1 Estrela)',
+                category: 'Polícia & Mundo',
+                desc: 'Remove uma estrela de procurado pela polícia a cada vez que o código é inserido.',
+                pc: 'LAWYERUP',
+                phone: '1-999-5299-3787',
+                ps: ['R1', 'R1', 'CIRCULO', 'R2', 'DIREITA', 'ESQUERDA', 'DIREITA', 'ESQUERDA', 'DIREITA', 'ESQUERDA'],
+                xbox: ['RB', 'RB', 'B', 'RT', 'DIREITA', 'ESQUERDA', 'DIREITA', 'ESQUERDA', 'DIREITA', 'ESQUERDA']
+            },
+
+            // --- CLIMA & GRAVIDADE ---
+            {
+                id: 'mudar-clima',
+                title: 'Mudar o Clima',
+                category: 'Clima & Gravidade',
+                desc: 'Alterna entre ensolarado, limpo, nublado, chuvoso, tempestade, neblina e neve.',
+                pc: 'MAKEITRAIN',
+                phone: '1-999-625-348-7246',
+                ps: ['R2', 'X', 'L1', 'L1', 'L2', 'L2', 'L2', 'QUADRADO'],
+                xbox: ['RT', 'A', 'LB', 'LB', 'LT', 'LT', 'LT', 'X']
+            },
+            {
+                id: 'gravidade-lunar',
+                title: 'Gravidade Lunar',
+                category: 'Clima & Gravidade',
+                desc: 'Reduz a gravidade do mundo, fazendo saltos e veículos flutuarem no ar.',
+                pc: 'FLOATER',
+                phone: '1-999-356-2837',
+                ps: ['ESQUERDA', 'ESQUERDA', 'L1', 'R1', 'L1', 'DIREITA', 'ESQUERDA', 'L1', 'ESQUERDA'],
+                xbox: ['ESQUERDA', 'ESQUERDA', 'LB', 'RB', 'LB', 'DIREITA', 'ESQUERDA', 'LB', 'ESQUERDA']
+            },
+            {
+                id: 'carros-deslizantes',
+                title: 'Carros Deslizantes (Modo Drift)',
+                category: 'Clima & Gravidade',
+                desc: 'Reduz o atrito dos pneus com o asfalto para fazer drifts longos com qualquer carro.',
+                pc: 'SNOWDAY',
+                phone: '1-999-766-9329',
+                ps: ['TRIANGULO', 'R1', 'R1', 'ESQUERDA', 'R1', 'L1', 'R2', 'L1'],
+                xbox: ['Y', 'RB', 'RB', 'ESQUERDA', 'RB', 'LB', 'RT', 'LB']
+            },
+            {
+                id: 'camera-lenta-jogo',
+                title: 'Câmera Lenta no Jogo',
+                category: 'Clima & Gravidade',
+                desc: 'Deixa todo o mundo em câmera lenta. Digite até 3x para desacelerar mais (4ª desativa).',
+                pc: 'SLOWMO',
+                phone: '1-999-756-966',
+                ps: ['TRIANGULO', 'ESQUERDA', 'DIREITA', 'DIREITA', 'QUADRADO', 'R2', 'R1'],
+                xbox: ['Y', 'ESQUERDA', 'DIREITA', 'DIREITA', 'X', 'RT', 'RB']
+            },
+
+            // --- VEÍCULOS & AERONAVES ---
+            {
+                id: 'buzzard',
+                title: 'Gerar Helicóptero Buzzard',
+                category: 'Veículos & Aeronaves',
+                desc: 'Faz aparecer um helicóptero de ataque armado com mísseis e metralhadoras.',
+                pc: 'BUZZOFF',
+                phone: '1-999-289-9633',
+                ps: ['CIRCULO', 'CIRCULO', 'L1', 'CIRCULO', 'CIRCULO', 'CIRCULO', 'L1', 'L2', 'R1', 'TRIANGULO', 'CIRCULO', 'TRIANGULO'],
+                xbox: ['B', 'B', 'LB', 'B', 'B', 'B', 'LB', 'LT', 'RB', 'Y', 'B', 'Y']
+            },
+            {
+                id: 'mallard',
+                title: 'Gerar Avião Acrobático Mallard',
+                category: 'Veículos & Aeronaves',
+                desc: 'Faz aparecer um avião monomotor ágil ideal para manobras aéreas.',
+                pc: 'BARNSTORM',
+                phone: '1-999-227-678676',
+                ps: ['CIRCULO', 'DIREITA', 'L1', 'L2', 'ESQUERDA', 'R1', 'L1', 'L1', 'ESQUERDA', 'ESQUERDA', 'X', 'TRIANGULO'],
+                xbox: ['B', 'DIREITA', 'LB', 'LT', 'ESQUERDA', 'RB', 'LB', 'LB', 'ESQUERDA', 'ESQUERDA', 'A', 'Y']
+            },
+            {
+                id: 'duster',
+                title: 'Gerar Avião Duster',
+                category: 'Veículos & Aeronaves',
+                desc: 'Faz aparecer um avião biplano clássico pulverizador agrícola.',
+                pc: 'FLYSPRAY',
+                phone: '1-999-359-777',
+                ps: ['DIREITA', 'ESQUERDA', 'R1', 'R1', 'R1', 'ESQUERDA', 'TRIANGULO', 'TRIANGULO', 'X', 'CIRCULO', 'L1', 'L1'],
+                xbox: ['DIREITA', 'ESQUERDA', 'RB', 'RB', 'RB', 'ESQUERDA', 'Y', 'Y', 'A', 'B', 'LB', 'LB']
+            },
+            {
+                id: 'dodo',
+                title: 'Gerar Hidroavião Dodo',
+                category: 'Veículos & Aeronaves',
+                desc: 'Faz aparecer o hidroavião Dodo (exclusivo das edições PS4/PS5, Xbox One/Series e PC).',
+                pc: 'EXTINCT',
+                phone: '1-999-398-4628',
+                ps: ['CIRCULO', 'DIREITA', 'L1', 'L2', 'ESQUERDA', 'R1', 'L1', 'L1', 'ESQUERDA', 'ESQUERDA', 'X', 'TRIANGULO'],
+                xbox: ['B', 'DIREITA', 'LB', 'LT', 'ESQUERDA', 'RB', 'LB', 'LB', 'ESQUERDA', 'ESQUERDA', 'A', 'Y']
+            },
+            {
+                id: 'kraken',
+                title: 'Gerar Submarino Kraken',
+                category: 'Veículos & Aeronaves',
+                desc: 'Faz aparecer o minissubmarino Kraken para explorar o fundo do oceano.',
+                pc: 'BUBBLES',
+                phone: '1-999-282-2537',
+                ps: ['ESQUERDA', 'ESQUERDA', 'L1', 'DIREITA', 'DIREITA', 'R2', 'ESQUERDA', 'L2', 'DIREITA'],
+                xbox: ['ESQUERDA', 'ESQUERDA', 'LB', 'DIREITA', 'DIREITA', 'RT', 'ESQUERDA', 'LT', 'DIREITA']
+            },
+            {
+                id: 'duke-odeath',
+                title: 'Gerar Carro Blindado Duke O\'Death',
+                category: 'Veículos & Aeronaves',
+                desc: 'Faz aparecer o muscle car blindado altamente resistente a tiros e batidas.',
+                pc: 'DEATHCAR',
+                phone: '1-999-332-84227',
+                ps: ['R1', 'CIRCULO', 'R2', 'DIREITA', 'L1', 'L2', 'X', 'X', 'QUADRADO', 'R1'],
+                xbox: ['RB', 'B', 'RT', 'DIREITA', 'LB', 'LT', 'A', 'A', 'X', 'RB']
+            },
+            {
+                id: 'comet',
+                title: 'Gerar Carro Esportivo Comet',
+                category: 'Veículos & Aeronaves',
+                desc: 'Faz aparecer o cupê esportivo Pfister Comet de alta velocidade.',
+                pc: 'COMET',
+                phone: '1-999-266-38',
+                ps: ['R1', 'CIRCULO', 'R2', 'DIREITA', 'L1', 'L2', 'X', 'X', 'QUADRADO', 'R1'],
+                xbox: ['RB', 'B', 'RT', 'DIREITA', 'LB', 'LT', 'A', 'A', 'X', 'RB']
+            },
+            {
+                id: 'rapid-gt',
+                title: 'Gerar Carro Esportivo Rapid GT',
+                category: 'Veículos & Aeronaves',
+                desc: 'Faz aparecer o conversível esportivo Dewbauchee Rapid GT.',
+                pc: 'RAPIDGT',
+                phone: '1-999-727-4348',
+                ps: ['R2', 'L1', 'CIRCULO', 'DIREITA', 'L1', 'R1', 'DIREITA', 'ESQUERDA', 'CIRCULO', 'R2'],
+                xbox: ['RT', 'LB', 'B', 'DIREITA', 'LB', 'RB', 'DIREITA', 'ESQUERDA', 'B', 'RT']
+            },
+            {
+                id: 'limousine',
+                title: 'Gerar Limousine (Stretch)',
+                category: 'Veículos & Aeronaves',
+                desc: 'Faz aparecer uma limousine de luxo digna de celebridade de Vinewood.',
+                pc: 'VINEWOOD',
+                phone: '1-999-846-39663',
+                ps: ['R2', 'DIREITA', 'L2', 'ESQUERDA', 'ESQUERDA', 'R1', 'L1', 'CIRCULO', 'DIREITA'],
+                xbox: ['RT', 'DIREITA', 'LT', 'ESQUERDA', 'ESQUERDA', 'RB', 'LB', 'B', 'DIREITA']
+            },
+            {
+                id: 'trashmaster',
+                title: 'Gerar Caminhão de Lixo (Trashmaster)',
+                category: 'Veículos & Aeronaves',
+                desc: 'Faz aparecer um caminhão de lixo pesado na frente do personagem.',
+                pc: 'TRASHED',
+                phone: '1-999-872-433',
+                ps: ['CIRCULO', 'R1', 'CIRCULO', 'R1', 'ESQUERDA', 'ESQUERDA', 'R1', 'L1', 'CIRCULO', 'DIREITA'],
+                xbox: ['B', 'RB', 'B', 'RB', 'ESQUERDA', 'ESQUERDA', 'RB', 'LB', 'B', 'DIREITA']
+            },
+            {
+                id: 'pcj-600',
+                title: 'Gerar Moto PCJ-600',
+                category: 'Veículos & Aeronaves',
+                desc: 'Faz aparecer uma motocicleta esportiva de rua Shitzu PCJ-600.',
+                pc: 'ROCKET',
+                phone: '1-999-762-538',
+                ps: ['R1', 'DIREITA', 'ESQUERDA', 'DIREITA', 'R2', 'ESQUERDA', 'DIREITA', 'QUADRADO', 'DIREITA', 'L2', 'L1', 'L1'],
+                xbox: ['RB', 'DIREITA', 'ESQUERDA', 'DIREITA', 'RT', 'ESQUERDA', 'DIREITA', 'X', 'DIREITA', 'LT', 'LB', 'LB']
+            },
+            {
+                id: 'sanchez',
+                title: 'Gerar Moto Sanchez (Cross)',
+                category: 'Veículos & Aeronaves',
+                desc: 'Faz aparecer a moto de trilha Maibatsu Sanchez perfeita para montanhas.',
+                pc: 'OFFROAD',
+                phone: '1-999-633-7623',
+                ps: ['CIRCULO', 'X', 'L1', 'CIRCULO', 'CIRCULO', 'L1', 'CIRCULO', 'R1', 'R2', 'L2', 'L1', 'L1'],
+                xbox: ['B', 'A', 'LB', 'B', 'B', 'LB', 'B', 'RB', 'RT', 'LT', 'LB', 'LB']
+            },
+            {
+                id: 'bmx',
+                title: 'Gerar Bicicleta BMX',
+                category: 'Veículos & Aeronaves',
+                desc: 'Faz aparecer uma bicicleta BMX para manobras urbanas e saltos.',
+                pc: 'BANDIT',
+                phone: '1-999-226-348',
+                ps: ['ESQUERDA', 'ESQUERDA', 'DIREITA', 'DIREITA', 'ESQUERDA', 'DIREITA', 'QUADRADO', 'CIRCULO', 'TRIANGULO', 'R1', 'R2'],
+                xbox: ['ESQUERDA', 'ESQUERDA', 'DIREITA', 'DIREITA', 'ESQUERDA', 'DIREITA', 'X', 'B', 'Y', 'RB', 'RT']
+            },
+            {
+                id: 'caddy',
+                title: 'Gerar Carrinho de Golfe (Caddy)',
+                category: 'Veículos & Aeronaves',
+                desc: 'Faz aparecer um carrinho de golfe compacto.',
+                pc: 'HOLEIN1',
+                phone: '1-999-4653-461',
+                ps: ['CIRCULO', 'L1', 'ESQUERDA', 'R1', 'L2', 'X', 'R1', 'L1', 'CIRCULO', 'X'],
+                xbox: ['B', 'LB', 'ESQUERDA', 'RB', 'LT', 'A', 'RB', 'LB', 'B', 'A']
+            }
+        ];
+
+        // 2. ESTADO GLOBAL DO APP
+        const state = {
+            platform: localStorage.getItem('gta5_platform') || 'ps', // 'ps' | 'xbox' | 'pc' | 'phone'
+            category: 'Todos',
+            search: '',
+            favorites: JSON.parse(localStorage.getItem('gta5_favorites') || '[]'),
+            modalCheatId: null
+        };
+
+        // 3. INICIALIZAÇÃO
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            setupSearch();
+            setPlatform(state.platform);
+        });
+
+        // 4. RENDERIZADOR DE BOTÕES VISUAIS DE CONSOLE, PC E CELULAR
+        function renderButtonToken(btnCode, platform, large = false) {
+            const sizeClasses = large
+                ? 'min-w-[44px] h-11 px-3 text-sm sm:text-base rounded-xl'
+                : 'min-w-[30px] h-7 px-2 text-[11px] rounded-lg';
+
+            // Direcionais (Setas)
+            const arrows = {
+                'CIMA': '↑',
+                'BAIXO': '↓',
+                'ESQUERDA': '←',
+                'DIREITA': '→'
+            };
+
+            if (arrows[btnCode]) {
+                return `<span class="inline-flex items-center justify-center ${sizeClasses} bg-slate-800 border border-slate-600 text-white font-extrabold btn-cap" title="Seta ${btnCode}">${arrows[btnCode]}</span>`;
+            }
+
+            // Gatilhos e Ombros (L1, R1, L2, R2, LB, RB, LT, RT)
+            if (['L1', 'R1', 'L2', 'R2', 'LB', 'RB', 'LT', 'RT'].includes(btnCode)) {
+                const isTrigger = ['L2', 'R2', 'LT', 'RT'].includes(btnCode);
+                return `<span class="inline-flex items-center justify-center ${sizeClasses} ${isTrigger ? 'bg-zinc-800 border-slate-500' : 'bg-slate-800 border-slate-600'} border text-slate-200 font-bold tracking-tight btn-cap">${btnCode}</span>`;
+            }
+
+            // Botões PlayStation
+            if (platform === 'ps') {
+                const psStyles = {
+                    'TRIANGULO': { symbol: '△', color: 'text-emerald-400 border-emerald-500/40 bg-emerald-950/60', label: 'Triângulo' },
+                    'CIRCULO':   { symbol: '○', color: 'text-rose-400 border-rose-500/40 bg-rose-950/60', label: 'Círculo' },
+                    'X':         { symbol: '✕', color: 'text-sky-400 border-sky-500/40 bg-sky-950/60', label: 'X' },
+                    'QUADRADO':  { symbol: '□', color: 'text-pink-400 border-pink-500/40 bg-pink-950/60', label: 'Quadrado' }
+                };
+                const item = psStyles[btnCode];
+                if (item) {
+                    return `<span class="inline-flex items-center justify-center ${sizeClasses} border font-black btn-cap ${item.color}" title="${item.label}">${item.symbol}</span>`;
+                }
+            }
+
+            // Botões Xbox
+            if (platform === 'xbox') {
+                const xboxStyles = {
+                    'Y': { color: 'text-amber-400 border-amber-500/40 bg-amber-950/60' },
+                    'B': { color: 'text-rose-400 border-rose-500/40 bg-rose-950/60' },
+                    'A': { color: 'text-emerald-400 border-emerald-500/40 bg-emerald-950/60' },
+                    'X': { color: 'text-sky-400 border-sky-500/40 bg-sky-950/60' }
+                };
+                const item = xboxStyles[btnCode];
+                if (item) {
+                    return `<span class="inline-flex items-center justify-center ${sizeClasses} border font-extrabold btn-cap ${item.color}">${btnCode}</span>`;
+                }
+            }
+
+            return `<span class="inline-flex items-center justify-center ${sizeClasses} bg-slate-800 border border-slate-600 text-white font-bold btn-cap">${btnCode}</span>`;
+        }
+
+        function renderCheatInputDisplay(cheat, platform, large = false) {
+            if (platform === 'ps' || platform === 'xbox') {
+                const seq = cheat[platform] || [];
+                return `<div class="flex flex-wrap items-center ${large ? 'justify-center gap-2' : 'gap-1.5'}">
+                    ${seq.map(btn => renderButtonToken(btn, platform, large)).join('')}
+                </div>`;
+            }
+
+            if (platform === 'pc') {
+                return `
+                    <div class="flex flex-wrap items-center ${large ? 'justify-center gap-3' : 'gap-2'}">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-zinc-900 border border-slate-700 text-slate-400 ${large ? 'text-sm' : 'text-xs'} font-mono">
+                            Console <kbd class="px-1.5 py-0.5 bg-slate-800 text-white rounded border border-slate-600 font-bold">~</kbd>
+                        </span>
+                        <code class="${large ? 'text-2xl sm:text-3xl px-5 py-2.5' : 'text-sm sm:text-base px-3.5 py-1.5'} font-mono font-extrabold tracking-widest rounded-xl bg-gta-green/15 text-gta-green border border-gta-green/40 select-all">
+                            ${cheat.pc}
+                        </code>
+                    </div>
+                `;
+            }
+
+            if (platform === 'phone') {
+                return `
+                    <div class="flex items-center ${large ? 'justify-center gap-3' : 'gap-2'}">
+                        <span class="inline-flex items-center justify-center ${large ? 'w-10 h-10 rounded-xl' : 'w-7 h-7 rounded-lg'} bg-gta-gold/15 text-gta-gold border border-gta-gold/30 shrink-0">
+                            <i data-lucide="phone-call" class="${large ? 'w-5 h-5' : 'w-3.5 h-3.5'}"></i>
+                        </span>
+                        <code class="${large ? 'text-xl sm:text-3xl px-4 py-2' : 'text-sm sm:text-base px-3 py-1'} font-mono font-extrabold tracking-wider rounded-xl bg-gta-gold/10 text-gta-gold border border-gta-gold/35 select-all">
+                            ${cheat.phone}
+                        </code>
+                    </div>
+                `;
+            }
+        }
+
+        // 5. TROCA DE PLATAFORMA & ATUALIZAÇÃO DA UI
+        function setPlatform(plat, updateModalOnly = false) {
+            state.platform = plat;
+            localStorage.setItem('gta5_platform', plat);
+
+            const platStyles = {
+                ps:    'bg-blue-600 text-white shadow-md shadow-blue-600/25',
+                xbox:  'bg-emerald-600 text-white shadow-md shadow-emerald-600/25',
+                pc:    'bg-gta-green text-black shadow-md shadow-gta-green/25',
+                phone: 'bg-gta-gold text-black shadow-md shadow-gta-gold/25'
+            };
+
+            // Atualiza botões do Header
+            document.querySelectorAll('.plat-btn').forEach(btn => {
+                const isTarget = btn.dataset.plat === plat;
+                btn.className = `plat-btn flex items-center justify-center gap-1.5 py-2 px-2 rounded-lg text-xs font-bold transition active:scale-95 ${
+                    isTarget ? platStyles[plat] : 'text-slate-400 hover:text-white'
+                }`;
+            });
+
+            // Atualiza botões dentro do Modal se estiver aberto
+            document.querySelectorAll('.modal-plat-btn').forEach(btn => {
+                const isTarget = btn.dataset.modalPlat === plat;
+                btn.className = `modal-plat-btn py-1.5 rounded-lg text-xs font-bold transition ${
+                    isTarget ? platStyles[plat] : 'text-slate-400 hover:text-white'
+                }`;
+            });
+
+            // Atualiza texto de dica do banner
+            const helperTexts = {
+                ps: 'PlayStation (PS4 / PS5 / PS3): Aperte os botões rapidamente durante o jogo (fora do menu de pausa).',
+                xbox: 'Xbox (Series X/S / One / 360): Digite a sequência rapidamente no controle durante a jogatina.',
+                pc: 'PC: Aperte a tecla ~ (ou aspas \') para abrir o console, digite o código e pressione Enter.',
+                phone: 'Celular In-Game: Abra o celular do personagem, vá em Contatos, abra o teclado numérico e disque.'
+            };
+            document.getElementById('platform-helper-text').textContent = helperTexts[plat];
+
+            renderCategories();
+            renderCheats();
+
+            if (state.modalCheatId) {
+                refreshFocusModalContent();
+            }
+        }
+
+        // 6. CATEGORIAS & BUSCA
+        function renderCategories() {
+            const categories = [
+                'Todos',
+                'Favoritos',
+                'Jogador & Combate',
+                'Polícia & Mundo',
+                'Veículos & Aeronaves',
+                'Clima & Gravidade'
+            ];
+
+            const container = document.getElementById('category-pills');
+            container.innerHTML = categories.map(cat => {
+                const isSelected = state.category === cat;
+                const favCount = cat === 'Favoritos' ? ` (${state.favorites.length})` : '';
+                return `
+                    <button 
+                        onclick="selectCategory('${cat.replace(/'/g, "\\'")}')" 
+                        class="px-3.5 py-2 rounded-full text-xs font-bold whitespace-nowrap transition active:scale-95 flex items-center gap-1.5 ${
+                            isSelected
+                                ? 'bg-gta-green text-black shadow-md shadow-gta-green/20'
+                                : 'bg-gta-surface text-slate-300 hover:text-white border border-gta-border'
+                        }">
+                        ${cat === 'Favoritos' ? `<i data-lucide="star" class="w-3.5 h-3.5 ${isSelected ? 'fill-black text-black' : 'text-gta-gold'}"></i>` : ''}
+                        <span>${cat}${favCount}</span>
+                    </button>
+                `;
+            }).join('');
+
+            lucide.createIcons();
+        }
+
+        function selectCategory(cat) {
+            state.category = cat;
+            renderCategories();
+            renderCheats();
+        }
+
+        function setupSearch() {
+            const input = document.getElementById('search-input');
+            const clearBtn = document.getElementById('clear-search-btn');
+
+            input.addEventListener('input', (e) => {
+                state.search = e.target.value.toLowerCase().trim();
+                clearBtn.classList.toggle('hidden', state.search === '');
+                renderCheats();
+            });
+        }
+
+        function clearSearch() {
+            const input = document.getElementById('search-input');
+            input.value = '';
+            state.search = '';
+            document.getElementById('clear-search-btn').classList.add('hidden');
+            renderCheats();
+        }
+
+        function resetFilters() {
+            clearSearch();
+            state.category = 'Todos';
+            renderCategories();
+            renderCheats();
+        }
+
+        function getFilteredCheats() {
+            return GTA5_CHEATS.filter(cheat => {
+                if (state.category === 'Favoritos' && !state.favorites.includes(cheat.id)) {
+                    return false;
+                }
+                if (state.category !== 'Todos' && state.category !== 'Favoritos' && cheat.category !== state.category) {
+                    return false;
+                }
+                if (state.search) {
+                    const matchTitle = cheat.title.toLowerCase().includes(state.search);
+                    const matchDesc = cheat.desc.toLowerCase().includes(state.search);
+                    const matchPc = cheat.pc.toLowerCase().includes(state.search);
+                    const matchPhone = cheat.phone.includes(state.search);
+                    return matchTitle || matchDesc || matchPc || matchPhone;
+                }
+                return true;
+            });
+        }
+
+        // 7. RENDERIZAÇÃO DOS CARDS DE CÓDIGOS
+        function renderCheats() {
+            const grid = document.getElementById('cheats-grid');
+            const emptyState = document.getElementById('empty-state');
+            const countBadge = document.getElementById('visible-cheats-count');
+
+            const filtered = getFilteredCheats();
+            countBadge.textContent = `${filtered.length} ${filtered.length === 1 ? 'código' : 'códigos'}`;
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+
+            grid.innerHTML = filtered.map(cheat => {
+                const isFav = state.favorites.includes(cheat.id);
+                const showCopyBtn = state.platform === 'pc' || state.platform === 'phone';
+
+                return `
+                    <article 
+                        onclick="openFocusModal('${cheat.id}')" 
+                        class="group bg-gta-card hover:bg-[#1b1f27] border border-gta-border hover:border-slate-600 rounded-2xl p-4 flex flex-col justify-between gap-3.5 transition cursor-pointer active:scale-[0.99] shadow-sm">
+                        
+                        <!-- Topo do Card: Título, Categoria e Ações -->
+                        <div class="flex items-start justify-between gap-2">
+                            <div class="min-w-0">
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                                    ${cheat.category}
+                                </span>
+                                <h2 class="font-display text-base sm:text-lg font-bold text-white group-hover:text-gta-green transition leading-snug mt-0.5">
+                                    ${cheat.title}
+                                </h2>
+                                <p class="text-xs text-slate-400 line-clamp-2 mt-1 leading-relaxed">
+                                    ${cheat.desc}
+                                </p>
+                            </div>
+
+                            <!-- Botões Favoritar & Ampliar -->
+                            <div class="flex items-center gap-1 shrink-0">
+                                <button 
+                                    onclick="toggleFavorite('${cheat.id}', event)" 
+                                    class="p-2 rounded-xl bg-gta-surface hover:bg-slate-800 border border-gta-border transition active:scale-90"
+                                    title="${isFav ? 'Remover dos Favoritos' : 'Favoritar Código'}">
+                                    <i data-lucide="star" class="w-4 h-4 ${isFav ? 'fill-gta-gold text-gta-gold' : 'text-slate-400 hover:text-white'}"></i>
+                                </button>
+                                <button 
+                                    onclick="openFocusModal('${cheat.id}', event)" 
+                                    class="p-2 rounded-xl bg-gta-surface hover:bg-slate-800 border border-gta-border text-slate-400 hover:text-gta-green transition active:scale-90"
+                                    title="Modo Leitura Fácil (Tela Cheia)">
+                                    <i data-lucide="maximize-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Rodapé do Card: Sequência Visual da Plataforma + Botão Copiar (PC/Celular) -->
+                        <div class="pt-3 border-t border-gta-border/80 flex items-center justify-between gap-2">
+                            <div class="flex-1 min-w-0">
+                                ${renderCheatInputDisplay(cheat, state.platform, false)}
+                            </div>
+
+                            ${showCopyBtn ? `
+                                <button 
+                                    onclick="copyCheatCode('${cheat.id}', event)" 
+                                    class="shrink-0 flex items-center gap-1.5 px-3 py-2 rounded-xl bg-gta-surface hover:bg-gta-green hover:text-black border border-gta-border text-xs font-bold text-slate-200 transition active:scale-90"
+                                    title="Copiar Código">
+                                    <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                                    <span>Copiar</span>
+                                </button>
+                            ` : ''}
+                        </div>
+                    </article>
+                `;
+            }).join('');
+
+            lucide.createIcons();
+        }
+
+        // 8. FAVORITOS (PERSISTÊNCIA NO LOCALSTORAGE)
+        function toggleFavorite(cheatId, event) {
+            if (event) event.stopPropagation();
+
+            const idx = state.favorites.indexOf(cheatId);
+            if (idx > -1) {
+                state.favorites.splice(idx, 1);
+                showToast('Removido dos favoritos', 'info');
+            } else {
+                state.favorites.push(cheatId);
+                showToast('Salvo nos favoritos!', 'success');
+            }
+
+            localStorage.setItem('gta5_favorites', JSON.stringify(state.favorites));
+            renderCategories();
+            renderCheats();
+
+            if (state.modalCheatId === cheatId) {
+                refreshFocusModalContent();
+            }
+        }
+
+        // 9. CÓPIA PARA ÁREA DE TRANSFERÊNCIA (COMPATÍVEL COM MOBILE E IFRAME)
+        function copyToClipboardSafe(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+            } catch (err) {
+                console.error('Erro ao copiar texto:', err);
+            }
+            document.body.removeChild(textarea);
+        }
+
+        function copyCheatCode(cheatId, event) {
+            if (event) event.stopPropagation();
+            const cheat = GTA5_CHEATS.find(c => c.id === cheatId);
+            if (!cheat) return;
+
+            let textToCopy = '';
+            if (state.platform === 'pc') {
+                textToCopy = cheat.pc;
+            } else if (state.platform === 'phone') {
+                textToCopy = cheat.phone;
+            } else {
+                textToCopy = `${cheat.title}: ${cheat[state.platform].join(' -> ')}`;
+            }
+
+            copyToClipboardSafe(textToCopy);
+            showToast(`Código copiado: ${textToCopy}`, 'success');
+        }
+
+        // 10. MODAL DE LEITURA FÁCIL (MODO TELA CHEIA PARA APOIAR NA MESA)
+        function openFocusModal(cheatId, event) {
+            if (event) event.stopPropagation();
+            state.modalCheatId = cheatId;
+            document.getElementById('focus-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            setPlatform(state.platform, true);
+        }
+
+        function refreshFocusModalContent() {
+            const cheat = GTA5_CHEATS.find(c => c.id === state.modalCheatId);
+            if (!cheat) return;
+
+            document.getElementById('modal-category-badge').textContent = cheat.category;
+            document.getElementById('modal-cheat-title').textContent = cheat.title;
+            document.getElementById('modal-cheat-desc').textContent = cheat.desc;
+
+            const labels = {
+                ps: 'Sequência no Controle PlayStation (Leitura Ampliada)',
+                xbox: 'Sequência no Controle Xbox (Leitura Ampliada)',
+                pc: 'Digite no Console do PC (Tecla ~ ou \')',
+                phone: 'Disque no Celular do Personagem'
+            };
+            document.getElementById('modal-instruction-label').textContent = labels[state.platform];
+            document.getElementById('modal-sequence-display').innerHTML = renderCheatInputDisplay(cheat, state.platform, true);
+
+            // Atualiza botão de favoritar do modal
+            const isFav = state.favorites.includes(cheat.id);
+            const favBtn = document.getElementById('modal-fav-btn');
+            favBtn.innerHTML = `
+                <i data-lucide="star" class="w-4 h-4 ${isFav ? 'fill-gta-gold text-gta-gold' : ''}"></i>
+                <span>${isFav ? 'Favoritado' : 'Favoritar'}</span>
+            `;
+
+            lucide.createIcons();
+        }
+
+        function copyCurrentModalCheat() {
+            if (state.modalCheatId) {
+                copyCheatCode(state.modalCheatId);
+            }
+        }
+
+        function toggleCurrentModalFavorite() {
+            if (state.modalCheatId) {
+                toggleFavorite(state.modalCheatId);
+            }
+        }
+
+        function closeFocusModal() {
+            document.getElementById('focus-modal').classList.add('hidden');
+            document.body.style.overflow = '';
+            state.modalCheatId = null;
+        }
+
+        function closeFocusModalOnBackdrop(event) {
+            if (event.target.id === 'focus-modal') {
+                closeFocusModal();
+            }
+        }
+
+        // 11. MODAL DE DICAS & REGRAS
+        function openTipsModal() {
+            document.getElementById('tips-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeTipsModal() {
+            document.getElementById('tips-modal').classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // 12. FEEDBACK VISUAL (TOAST)
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+
+            const styles = type === 'success'
+                ? 'bg-emerald-950/95 border-gta-green/60 text-emerald-100'
+                : 'bg-gta-card/95 border-slate-600 text-slate-200';
+
+            const icon = type === 'success' ? 'check-circle-2' : 'info';
+
+            toast.className = `flex items-center gap-2.5 px-4 py-3 rounded-2xl border backdrop-blur-md shadow-2xl text-xs font-bold transition-all duration-300 pointer-events-auto ${styles}`;
+            toast.innerHTML = `
+                <i data-lucide="${icon}" class="w-4 h-4 text-gta-green shrink-0"></i>
+                <span class="flex-1 truncate">${message}</span>
+            `;
+
+            container.appendChild(toast);
+            lucide.createIcons();
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-2');
+                setTimeout(() => toast.remove(), 250);
+            }, 2600);
+        }
+    </script>
+</body>
+</html>
+```
